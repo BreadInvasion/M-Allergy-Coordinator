@@ -3,6 +3,8 @@ version: '0.0.1'
 services:
   server:
     image: rtweed/mgweb
+    container_name: allergyserver
+    ports:
+      - 3000:8080
     volumes: 
       - ./backend_routes:/opt/mgweb/mapped
-      - ./frontend_build:/var/www/html

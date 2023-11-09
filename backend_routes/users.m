@@ -6,16 +6,17 @@ create(username,password,errors) ;
 	kill errors
 	;
 	if $data(^users(username)) do
-		set errors("errors","params",1)="Username taken"
-		QUIT
+	. set errors("errors","params",1)="Username taken"
+	. QUIT
 	set ^users(username)=username
 	set ^users(username,"passwordHash")=$$hashPassword^%zmgwebUtils(password)
+	QUIT 1
 	;
 delete(username,errors) ;
 	kill errors
 	if '$data(^users(username)) do
-		set errors("errors","params",1)="User does not exist"
-		QUIT
+	. set errors("errors","params",1)="User does not exist"
+	. QUIT
 	kill ^users(username)
 updateAllergyList(req,username,errors) ;
 	kill errors
