@@ -44,16 +44,16 @@ tryLogin(req,errors) ;
 	;
 	new username,password,passwordHash
 	;
-	set username=req("username")
-	set password=req("password")
-	if `$d(username) do
+	set username=req("body","username")
+	set password=req("body","password")
+	if '$d(username) do
 	. set errors("errors","params",1)="Username required"
 	. QUIT 0
-	set passwordHash=^users(username,"passwordHash")
-	if `$data(passwordHash) do
+	if '$data(^users(username,"passwordHash")) do
 	. set errors("errors","auth",1)="Username or password is incorrect"
 	. QUIT 0
-	if `$$verifyPassword^%zmgwebUtils(password,passwordHash) do
+	set passwordHash=^users(username,"passwordHash")
+	if '$$verifyPassword^%zmgwebUtils(password,passwordHash) do
 	. set errors("errors","auth",1)="Username or password is incorrect"
 	. QUIT 0
 	QUIT $$createToken(username)

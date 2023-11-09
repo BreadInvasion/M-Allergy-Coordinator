@@ -46,3 +46,11 @@ token(req) ;
 	set header="HTTP/1.1 200 OK"_crlf_"Content-type: application/json"_crlf_"Authorization: "_token
 	QUIT header_"{}"
 getGroups(req) ;
+	new username,errors,results
+	;
+	; Validate user access token
+	set username=$$authenticate^security(.req,.errors)
+	if $data(errors) QUIT $$errorResponse(.errors,403)
+	;
+	$$getMemberGroups^groups(username,.results)
+	QUIT $$response^%zmgwebUtils(.results)

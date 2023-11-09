@@ -25,6 +25,12 @@
         "handler": "deleteUser^userAPIs"
     },
     {
+        "uri": "/api/user/allergy",
+        "method": "POST",
+        
+        "handler": "updateAllergies^userAPIs"
+    },
+    {
         "uri": "/api/group/new",
         "method": "POST",
         "handler": "createGroup^groupAPIs"
@@ -33,6 +39,11 @@
         "uri": "/api/group/delete",
         "method": "POST",
         "handler": "deleteGroup^groupAPIs"
+    },
+    {
+        "uri": "/api/group/edit",
+        "method": "POST",
+        "handler": "editGroup^groupAPIs"
     },
     {
         "uri": "/api/group/add",
