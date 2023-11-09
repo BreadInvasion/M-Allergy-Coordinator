@@ -1,0 +1,8 @@
+version: '0.0.1'
+
+services:
+  server:
+    image: rtweed/mgweb
+    volumes: 
+      - ./backend_routes:/opt/mgweb/mapped
+      - ./frontend_build:/var/www/html

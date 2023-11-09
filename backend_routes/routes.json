@@ -1,0 +1,52 @@
+[
+    {
+        "uri": "/api/me",
+        "method": "GET",
+        "handler": "identity^rootAPIs"
+    },
+    {
+        "uri": "/api/token",
+        "method": "POST",
+        "handler": "token^rootAPIs"
+    },
+    {
+        "uri": "/api/groups",
+        "method": "GET",
+        "handler": "getGroups^rootAPIs"
+    },
+    {
+        "uri": "/api/user/create",
+        "method": "POST",
+        "handler": "createUser^userAPIs"
+    },
+    {
+        "uri": "/api/user/delete",
+        "method": "POST",
+        "handler": "deleteUser^userAPIs"
+    },
+    {
+        "uri": "/api/group/new",
+        "method": "POST",
+        "handler": "createGroup^groupAPIs"
+    },
+    {
+        "uri": "/api/group/delete",
+        "method": "POST",
+        "handler": "deleteGroup^groupAPIs"
+    },
+    {
+        "uri": "/api/group/add",
+        "method": "POST",
+        "handler": "addUser^groupAPIs"
+    },
+    {
+        "uri": "/api/group/remove",
+        "method": "POST",
+        "handler": "removeUser^groupAPIs"
+    },
+    {
+        "uri": "/api/group/parse",
+        "method": "POST",
+        "handler": "createAllergyList^groupAPIs"
+    }
+]
