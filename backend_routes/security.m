@@ -42,11 +42,17 @@ tryLogin(req,errors) ;
 	;
 	kill errors
 	;
-	new username,password,passwordHash
+	new username,password,passwordHash,requiredFields
 	;
-	set username=req("body","username")
-	set password=req("body","password")
-	if '$d(username) do
+	; Validate parameters
+	set requiredFields("username")=""
+	set requiredFields("password")=""
+	if $$bodyAndFields^common(.req,"auth",.requiredFields,"",.errors)
+	if $data(errors) QUIT $$errorResponse^common(.errors)
+	; Retrieve parameters
+	set username=req("body","auth","username")
+	set password=req("body","auth","password")
+	if '$data(username) do
 	. set errors("errors","params",1)="Username required"
 	. QUIT 0
 	if '$data(^users(username,"passwordHash")) do
