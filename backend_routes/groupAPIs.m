@@ -135,8 +135,8 @@ createAllergyList(req) ;
 	; Validate content
 	new requiredFields
 	set requiredFields("groupID")=""
-	if $$bodyAndFields(.req,"params",.requiredFields,"",.errors)
-	if $data(errors) QUIT $$errorResponse(.errors)
+	if $$bodyAndFields^common(.req,"params",.requiredFields,"",.errors)
+	if $data(errors) QUIT $$errorResponse^common(.errors)
 	; Retrieve content
 	set groupID=req("body","params","groupID")
 	set includeOwner=$get(req("body","params","includeOwner"),"")
