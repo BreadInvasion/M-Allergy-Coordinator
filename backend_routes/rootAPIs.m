@@ -22,7 +22,7 @@ token(req) ;
 	if $d(errors) QUIT $$errorResponse^common(.errors,401)
 	;
 	set crlf=$c(13,10)
-	set header="HTTP/1.1 200 OK"_crlf_"Content-type: application/json"_crlf_"Authorization: "_token
+	set header="HTTP/1.1 200 OK"_crlf_"Content-type: application/json"_crlf_"Authorization: "_token_crlf_crlf
 	QUIT header_"{}"
 getGroups(req) ;
 	new username,errors,results
